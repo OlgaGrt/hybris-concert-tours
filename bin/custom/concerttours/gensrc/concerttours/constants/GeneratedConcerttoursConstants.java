@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 11 апр. 2022 г., 23:48:48                   ---
+ * --- Generated at 12 апр. 2022 г., 9:49:48                    ---
  * ----------------------------------------------------------------
  */
 package concerttours.constants;
