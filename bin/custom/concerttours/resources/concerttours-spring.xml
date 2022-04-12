@@ -109,5 +109,15 @@
     <bean id="ConcerttoursCustomSetup" class="concerttours.setup.ConcerttoursCustomSetup">
         <property name="importService" ref="importService"/>
     </bean>
+
+
+    <bean id = "bandAlbumSalesInterceptor" class="concerttours.interceptors.BandAlbumSalesInterceptor"/>
+    <bean id="bandIntepceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="bandAlbumSalesInterceptor"/>
+        <property name="typeCode" value="Band"/>
+    </bean>
+    <bean id="bandAlbumSalesEventListener" class="concerttours.events.BandAlbumSalesEventListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+    </bean>
 			
 </beans>
