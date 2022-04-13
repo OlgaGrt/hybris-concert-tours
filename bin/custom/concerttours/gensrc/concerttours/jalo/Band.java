@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 12 апр. 2022 г., 11:43:52                   ---
+ * --- Generated at 13 апр. 2022 г., 10:30:50                   ---
  * ----------------------------------------------------------------
  */
 package concerttours.jalo;
@@ -12,8 +12,12 @@ import de.hybris.platform.directpersistence.annotation.SLDSafe;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
+import de.hybris.platform.jalo.JaloInvalidParameterException;
 import de.hybris.platform.jalo.SessionContext;
+import de.hybris.platform.jalo.c2l.C2LManager;
+import de.hybris.platform.jalo.c2l.Language;
 import de.hybris.platform.jalo.enumeration.EnumerationValue;
+import de.hybris.platform.jalo.media.MediaContainer;
 import de.hybris.platform.jalo.product.Product;
 import de.hybris.platform.jalo.type.CollectionType;
 import de.hybris.platform.jalo.type.ComposedType;
@@ -42,6 +46,8 @@ public class Band extends GenericItem
 	public static final String HISTORY = "history";
 	/** Qualifier of the <code>Band.albumSales</code> attribute **/
 	public static final String ALBUMSALES = "albumSales";
+	/** Qualifier of the <code>Band.image</code> attribute **/
+	public static final String IMAGE = "image";
 	/** Qualifier of the <code>Band.tours</code> attribute **/
 	public static final String TOURS = "tours";
 	/** Qualifier of the <code>Band.types</code> attribute **/
@@ -71,6 +77,7 @@ public class Band extends GenericItem
 		tmp.put(NAME, AttributeMode.INITIAL);
 		tmp.put(HISTORY, AttributeMode.INITIAL);
 		tmp.put(ALBUMSALES, AttributeMode.INITIAL);
+		tmp.put(IMAGE, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -194,7 +201,11 @@ public class Band extends GenericItem
 	 */
 	public String getHistory(final SessionContext ctx)
 	{
-		return (String)getProperty( ctx, "history".intern());
+		if( ctx == null || ctx.getLanguage() == null )
+		{
+			throw new JaloInvalidParameterException("Band.getHistory requires a session language", 0 );
+		}
+		return (String)getLocalizedProperty( ctx, "history".intern());
 	}
 	
 	/**
@@ -207,12 +218,38 @@ public class Band extends GenericItem
 	}
 	
 	/**
+	 * <i>Generated method</i> - Getter of the <code>Band.history</code> attribute. 
+	 * @return the localized history - history of band
+	 */
+	public Map<Language,String> getAllHistory(final SessionContext ctx)
+	{
+		return (Map<Language,String>)getAllLocalizedProperties(ctx,"history".intern(),C2LManager.getInstance().getAllLanguages());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Band.history</code> attribute. 
+	 * @return the localized history - history of band
+	 */
+	public Map<Language,String> getAllHistory()
+	{
+		return getAllHistory( getSession().getSessionContext() );
+	}
+	
+	/**
 	 * <i>Generated method</i> - Setter of the <code>Band.history</code> attribute. 
 	 * @param value the history - history of band
 	 */
 	public void setHistory(final SessionContext ctx, final String value)
 	{
-		setProperty(ctx, "history".intern(),value);
+		if ( ctx == null) 
+		{
+			throw new JaloInvalidParameterException( "ctx is null", 0 );
+		}
+		if( ctx.getLanguage() == null )
+		{
+			throw new JaloInvalidParameterException("Band.setHistory requires a session language", 0 );
+		}
+		setLocalizedProperty(ctx, "history".intern(),value);
 	}
 	
 	/**
@@ -222,6 +259,60 @@ public class Band extends GenericItem
 	public void setHistory(final String value)
 	{
 		setHistory( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Band.history</code> attribute. 
+	 * @param value the history - history of band
+	 */
+	public void setAllHistory(final SessionContext ctx, final Map<Language,String> value)
+	{
+		setAllLocalizedProperties(ctx,"history".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Band.history</code> attribute. 
+	 * @param value the history - history of band
+	 */
+	public void setAllHistory(final Map<Language,String> value)
+	{
+		setAllHistory( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Band.image</code> attribute.
+	 * @return the image - picture of band in different formats
+	 */
+	public MediaContainer getImage(final SessionContext ctx)
+	{
+		return (MediaContainer)getProperty( ctx, "image".intern());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Band.image</code> attribute.
+	 * @return the image - picture of band in different formats
+	 */
+	public MediaContainer getImage()
+	{
+		return getImage( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Band.image</code> attribute. 
+	 * @param value the image - picture of band in different formats
+	 */
+	public void setImage(final SessionContext ctx, final MediaContainer value)
+	{
+		setProperty(ctx, "image".intern(),value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Band.image</code> attribute. 
+	 * @param value the image - picture of band in different formats
+	 */
+	public void setImage(final MediaContainer value)
+	{
+		setImage( getSession().getSessionContext(), value );
 	}
 	
 	/**
